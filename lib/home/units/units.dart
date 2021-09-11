@@ -1,6 +1,5 @@
 import 'package:ffbe/home/homestateleswidget.dart';
-import 'package:flutter/cupertino.dart';
-import 'dart:developer' as developer;
+import 'package:flutter/material.dart';
 
 class UnitsWidget extends HomeStatefulWidget {
   UnitsWidget({Key? key}) : super(key: key, title: "Units");
@@ -12,12 +11,11 @@ class UnitsWidget extends HomeStatefulWidget {
 }
 
 class _EncyclopediaScreenState extends State<UnitsWidget> {
-
   @override
   void initState() {
     super.initState();
-    developer.log("test");
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(

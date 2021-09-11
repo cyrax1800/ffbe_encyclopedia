@@ -1,5 +1,5 @@
 import 'package:ffbe/home/homestateleswidget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SettingWidget extends HomeStatefulWidget {
   SettingWidget({Key? key}) : super(key: key, title: "Settings");
