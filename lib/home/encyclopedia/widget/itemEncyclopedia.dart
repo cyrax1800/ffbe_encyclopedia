@@ -103,97 +103,51 @@ class ItemEncyclopedia extends StatelessWidget {
               ],
             ),
             if (encyclopediaViewParam.elementInflict.isNotEmpty)
-              Container(
-                height: 28,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: encyclopediaViewParam.elementInflict
-                      .map((e) => _ItemDetailWidget(
-                            imagePath: e.item.image,
-                            value: e.value,
-                            itemTypeImagePath: Assets.graphics.sword.path,
-                          ))
-                      .toList(),
-                ),
+              Row(
+                children: encyclopediaViewParam.elementInflict
+                    .map((e) => _ItemDetailWidget(
+                          imagePath: e.item.image,
+                          value: e.value,
+                          itemTypeImagePath: Assets.graphics.sword.path,
+                        ))
+                    .toList(),
               ),
             if (encyclopediaViewParam.elementResistance.isNotEmpty)
-              Container(
-                height: 28,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: encyclopediaViewParam.elementResistance
-                      .map((e) => _ItemDetailWidget(
-                            imagePath: e.item.image,
-                            value: e.value,
-                            itemTypeImagePath: Assets.graphics.heavyShield.path,
-                          ))
-                      .toList(),
-                ),
+              Row(
+                children: encyclopediaViewParam.elementResistance
+                    .map((e) => _ItemDetailWidget(
+                          imagePath: e.item.image,
+                          value: e.value,
+                          itemTypeImagePath: Assets.graphics.heavyShield.path,
+                        ))
+                    .toList(),
               ),
             if (encyclopediaViewParam.ailmentInflict.isNotEmpty)
-              Container(
-                height: 28,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: encyclopediaViewParam.ailmentInflict
-                      .map((e) => _ItemDetailWidget(
-                            imagePath: e.item.image,
-                            value: e.value,
-                            itemTypeImagePath: Assets.graphics.sword.path,
-                          ))
-                      .toList(),
-                ),
+              Row(
+                children: encyclopediaViewParam.ailmentInflict
+                    .map((e) => _ItemDetailWidget(
+                          imagePath: e.item.image,
+                          value: e.value,
+                          itemTypeImagePath: Assets.graphics.sword.path,
+                        ))
+                    .toList(),
               ),
             if (encyclopediaViewParam.ailmentResistance.isNotEmpty)
-              Container(
-                height: 28,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: encyclopediaViewParam.ailmentResistance
-                      .map((e) => _ItemDetailWidget(
-                            imagePath: e.item.image,
-                            value: e.value,
-                            itemTypeImagePath: Assets.graphics.heavyShield.path,
-                          ))
-                      .toList(),
-                ),
+              Row(
+                children: encyclopediaViewParam.ailmentResistance
+                    .map((e) => _ItemDetailWidget(
+                          imagePath: e.item.image,
+                          value: e.value,
+                          itemTypeImagePath: Assets.graphics.heavyShield.path,
+                        ))
+                    .toList(),
               ),
             if (encyclopediaViewParam.physicalKiller.isNotEmpty)
-              Container(
-                height: 40,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: encyclopediaViewParam.physicalKiller
-                      .map((e) => Column(
-                            children: [
-                              Image.asset(e.item.physicalKillerImage,
-                                  width: 28, height: 28, fit: BoxFit.contain),
-                              Text(
-                                e.value.toString() + "%",
-                                style: TextStyle(
-                                    fontSize: 10, fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ))
-                      .toList(),
-                ),
-              ),
-            if (encyclopediaViewParam.magicalKiller.isNotEmpty)
-              Container(
-                height: 40,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: encyclopediaViewParam.magicalKiller
-                      .map(
-                        (e) => Column(
+              Row(
+                children: encyclopediaViewParam.physicalKiller
+                    .map((e) => Column(
                           children: [
-                            Image.asset(e.item.magicalKillerImage,
+                            Image.asset(e.item.physicalKillerImage,
                                 width: 28, height: 28, fit: BoxFit.contain),
                             Text(
                               e.value.toString() + "%",
@@ -201,11 +155,31 @@ class ItemEncyclopedia extends StatelessWidget {
                                   fontSize: 10, fontWeight: FontWeight.bold),
                             )
                           ],
-                        ),
-                      )
-                      .toList(),
-                ),
-              )
+                        ))
+                    .toList(),
+              ),
+            if (encyclopediaViewParam.magicalKiller.isNotEmpty)
+              Row(
+                children: encyclopediaViewParam.magicalKiller
+                    .map(
+                      (e) => Column(
+                        children: [
+                          Image.asset(e.item.magicalKillerImage,
+                              width: 28, height: 28, fit: BoxFit.contain),
+                          Text(
+                            e.value.toString() + "%",
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    )
+                    .toList(),
+              ),
+            if (encyclopediaViewParam.description.isNotEmpty)
+              ...encyclopediaViewParam.description.map((e) =>
+                  _ItemDescriptionWidget(
+                      description: e.value, imageUrl: e.imageUrl)),
           ],
         ));
   }
@@ -252,6 +226,31 @@ class _ItemDetailWidget extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class _ItemDescriptionWidget extends StatelessWidget {
+  final String imageUrl;
+  final String description;
+
+  const _ItemDescriptionWidget(
+      {Key? key, this.imageUrl = "", required this.description})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (imageUrl.isNotEmpty)
+          CachedNetworkImage(
+              imageUrl: imageUrl,
+              fadeInDuration: Duration(milliseconds: 100),
+              width: 24,
+              height: 24,
+              fit: BoxFit.scaleDown),
+        Text(description)
+      ],
     );
   }
 }

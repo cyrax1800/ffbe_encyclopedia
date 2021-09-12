@@ -19,7 +19,7 @@ class EncyclopediaViewParam {
   final List<WrappedTypeWithValueParam<Ailments>> ailmentResistance;
   final List<WrappedTypeWithValueParam<Race>> physicalKiller;
   final List<WrappedTypeWithValueParam<Race>> magicalKiller;
-  final List<String> description;
+  final List<Description> description;
 
   EncyclopediaViewParam(
       {required this.id,
@@ -55,6 +55,13 @@ class Stats {
       required this.spr,
       required this.hp,
       required this.mp});
+}
+
+class Description {
+  final String imageUrl;
+  final String value;
+
+  Description(this.imageUrl, this.value);
 }
 
 extension StatsExtension on Stats {

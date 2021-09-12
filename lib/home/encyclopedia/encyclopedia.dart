@@ -57,41 +57,6 @@ class _EncyclopediaScreenState extends State<EncyclopediaWidget>
             ],
           ),
         ),
-        ItemEncyclopedia(
-          encyclopediaViewParam: EncyclopediaViewParam(
-              id: 1,
-              iconUrl: "https://ffbeequip.com/img/items/ability_21.png",
-              name: "Test",
-              type: 1,
-              rarity: 2,
-              isTwoHanded: false,
-              isNonStackable: false,
-              stats: Stats(atk: 0, mag: 0, def: 0, hp: 0, spr: 0, mp: 0),
-              additionalStats:
-                  Stats(atk: 0, mag: 0, def: 0, hp: 0, spr: 0, mp: 0),
-              elementInflict: [
-                WrappedTypeWithValueParam(ElementType.fire, 100),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-                WrappedTypeWithValueParam(ElementType.dark, -20),
-              ],
-              elementResistance: [],
-              ailmentInflict: [],
-              ailmentResistance: [],
-              physicalKiller: [
-                WrappedTypeWithValueParam(Race.beast, 20),
-              ],
-              magicalKiller: [],
-              description: []),
-        )
       ],
     );
   }
