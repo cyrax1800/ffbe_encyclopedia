@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'materialEntity.dart';
+part of 'materiaEntity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MaterialEntity _$MaterialEntityFromJson(Map<String, dynamic> json) =>
-    MaterialEntity(
+MateriaEntity _$MateriaEntityFromJson(Map<String, dynamic> json) =>
+    MateriaEntity(
       json['id'] as int,
       json['name'] as String,
       json['icon'] as String,
@@ -18,7 +18,7 @@ MaterialEntity _$MaterialEntityFromJson(Map<String, dynamic> json) =>
       json['sTmr'] as int?,
     );
 
-Map<String, dynamic> _$MaterialEntityToJson(MaterialEntity instance) =>
+Map<String, dynamic> _$MateriaEntityToJson(MateriaEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

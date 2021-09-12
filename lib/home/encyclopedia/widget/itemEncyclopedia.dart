@@ -15,7 +15,7 @@ class ItemEncyclopedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String stats = encyclopediaViewParam.stats.formatString();
-    String additionalStats = encyclopediaViewParam.stats.formatString();
+    String additionalStats = encyclopediaViewParam.additionalStats.formatString();
 
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),

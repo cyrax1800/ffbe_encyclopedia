@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 
 // Wait for PR https://github.com/flutter/flutter/pull/84394
 Future<T?> showDraggableBottomSheet<T>(
-    {required BuildContext context,
-    required Widget child,
-    PeekHeight peekHeight = PeekHeight.height_65}) {
+    {required BuildContext context, required Widget child, PeekHeight peekHeight = PeekHeight.height_65}) {
   return showModalBottomSheet(
       isScrollControlled: true,
       enableDrag: true,
       isDismissible: true,
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0))),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0))),
       context: context,
       builder: (BuildContext context) {
         return DraggableScrollableSheet(
@@ -27,9 +24,7 @@ Future<T?> showDraggableBottomSheet<T>(
               Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(8.0),
-                        topRight: Radius.circular(8.0))),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0))),
                 child: SingleChildScrollView(
                   controller: scrollController,
                   child: Column(
@@ -42,13 +37,10 @@ Future<T?> showDraggableBottomSheet<T>(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(8.0),
-                        topRight: Radius.circular(8.0))),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0))),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xffC0C3CF),
-                      borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                  decoration:
+                      BoxDecoration(color: Color(0xffC0C3CF), borderRadius: BorderRadius.all(Radius.circular(8.0))),
                   width: 36,
                   height: 4,
                 ),
