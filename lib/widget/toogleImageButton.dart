@@ -28,6 +28,7 @@ class _ToggleImageButton extends State<ToggleImageButton> {
     setState(() {
       _isSelected = !_isSelected;
     });
+    widget.callback();
   }
 
   @override

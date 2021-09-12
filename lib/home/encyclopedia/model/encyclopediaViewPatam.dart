@@ -49,12 +49,12 @@ class Stats {
   final int mp;
 
   Stats(
-      {required this.atk,
-      required this.def,
-      required this.mag,
-      required this.spr,
-      required this.hp,
-      required this.mp});
+      {this.atk = 0,
+      this.def = 0,
+      this.mag = 0,
+      this.spr = 0,
+      this.hp = 0,
+      this.mp = 0});
 }
 
 class Description {

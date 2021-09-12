@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-abstract class HomeStatefulWidget extends StatefulWidget {
+abstract class HomeStatelessWidget extends StatelessWidget {
   final String title;
 
-  const HomeStatefulWidget({Key? key, required this.title}) : super(key: key);
+  const HomeStatelessWidget({Key? key, required this.title}) : super(key: key);
 }

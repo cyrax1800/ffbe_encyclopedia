@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:ffbe/gen/assets.gen.dart';
 import 'package:ffbe/home/homestateleswidget.dart';
@@ -40,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   String _title = "";
 
-  final List<HomeStatefulWidget> _children = [
+  final List<HomeStatelessWidget> _children = [
     EncyclopediaWidget(),
     UnitsWidget(),
     SettingWidget()

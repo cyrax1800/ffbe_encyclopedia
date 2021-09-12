@@ -1,37 +1,27 @@
+import 'package:ffbe/home/encyclopedia/controller/encyclopediaController.dart';
 import 'package:ffbe/home/encyclopedia/model/tuneSetting.dart';
-import 'package:ffbe/home/encyclopedia/model/wrappedTypeWithValueParam.dart';
 import 'package:ffbe/home/encyclopedia/tuneSettingWidget.dart';
 import 'package:ffbe/home/encyclopedia/widget/itemEncyclopedia.dart';
 import 'package:ffbe/home/homestateleswidget.dart';
-import 'package:ffbe/model/type/element.dart';
-import 'package:ffbe/model/type/race.dart';
 import 'package:ffbe/widget/bottomsheet.dart';
 import 'package:ffbe/widget/searchWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'model/encyclopediaViewPatam.dart';
-
-class EncyclopediaWidget extends HomeStatefulWidget {
+class EncyclopediaWidget extends HomeStatelessWidget {
   EncyclopediaWidget({Key? key}) : super(key: key, title: "Encyclopedia");
 
-  @override
-  State<StatefulWidget> createState() {
-    return _EncyclopediaScreenState();
-  }
-}
-
-class _EncyclopediaScreenState extends State<EncyclopediaWidget>
-    with AutomaticKeepAliveClientMixin {
-  TuneSetting _tuneSetting = TuneSetting();
+  final encyclopediaController = Get.put(EncyclopediaController());
 
   void onTuneSettingPressed(BuildContext context) async {
     TuneSetting? result = await showDraggableBottomSheet<TuneSetting>(
         context: context,
         peekHeight: PeekHeight.wrap,
-        child: TuneSettingWidget(tuneSetting: _tuneSetting));
+        child:
+            TuneSettingWidget(tuneSetting: encyclopediaController.tuneSetting));
 
     if (result != null) {
-      _tuneSetting = result;
+      encyclopediaController.updateSetting(result);
     }
   }
 
@@ -39,7 +29,6 @@ class _EncyclopediaScreenState extends State<EncyclopediaWidget>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Column(
       children: [
         Padding(
@@ -57,10 +46,14 @@ class _EncyclopediaScreenState extends State<EncyclopediaWidget>
             ],
           ),
         ),
+        Obx(() => Expanded(
+              child: ListView.builder(
+                  itemCount: encyclopediaController.itemList.length,
+                  itemBuilder: (context, index) => ItemEncyclopedia(
+                      encyclopediaViewParam:
+                          encyclopediaController.itemList[index])),
+            ))
       ],
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

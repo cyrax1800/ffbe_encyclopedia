@@ -201,7 +201,9 @@ class _TuneSettingWidget extends State<TuneSettingWidget> {
               margin: EdgeInsets.symmetric(vertical: 12.0),
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => {Navigator.pop(context, _tuneSetting)},
+                  onPressed: () {
+                    Navigator.pop(context, _tuneSetting);
+                  },
                   child: Text("Apply")))
         ],
       ),

@@ -1,18 +1,17 @@
+
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 class SearchBarWidget extends StatefulWidget {
   final String hintText;
   final ValueChanged<String>? onTextChanged;
-  String _searchText = "";
+  final String searchText;
 
   SearchBarWidget(
       {Key? key,
-      String? searchText,
+      this.searchText = "",
       required this.hintText,
       this.onTextChanged})
-      : _searchText = searchText ?? "",
-        super(key: key);
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SearchBarState();
@@ -20,11 +19,18 @@ class SearchBarWidget extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBarWidget> {
   final TextEditingController _controller = TextEditingController();
+  String _text = "";
 
   @override
   void initState() {
     super.initState();
-    _controller.text = widget._searchText;
+    _controller.text = widget.searchText;
+    _text = widget.searchText;
+    _controller.addListener(() {
+      setState(() {
+        _text = _controller.text;
+      });
+    });
   }
 
   void onClearIconPressed() {
@@ -41,13 +47,15 @@ class _SearchBarState extends State<SearchBarWidget> {
               border: OutlineInputBorder(),
               hintText: widget.hintText,
               prefixIcon: Icon(Icons.search, size: 20),
-              suffixIcon: IconButton(
-                  iconSize: 24,
-                  padding: EdgeInsets.all(4.0),
-                  icon: Icon(
-                    Icons.clear,
-                  ),
-                  onPressed: onClearIconPressed),
+              suffixIcon: _text.isNotEmpty
+                  ? IconButton(
+                      iconSize: 24,
+                      padding: EdgeInsets.all(4.0),
+                      icon: Icon(
+                        Icons.clear,
+                      ),
+                      onPressed: onClearIconPressed)
+                  : null,
             ),
             onChanged: widget.onTextChanged));
   }

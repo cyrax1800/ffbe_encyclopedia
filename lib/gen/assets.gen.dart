@@ -5,6 +5,14 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsDataGen {
+  const $AssetsDataGen();
+
+  String get parsedEquipment => 'assets/data/parsed_equipment.json';
+  String get parsedMateria => 'assets/data/parsed_materia.json';
+  String get parsedSkill => 'assets/data/parsed_skill.json';
+}
+
 class $AssetsGraphicsGen {
   const $AssetsGraphicsGen();
 
@@ -172,6 +180,7 @@ class $AssetsGraphicsGen {
 class Assets {
   Assets._();
 
+  static const $AssetsDataGen data = $AssetsDataGen();
   static const $AssetsGraphicsGen graphics = $AssetsGraphicsGen();
 }
 
